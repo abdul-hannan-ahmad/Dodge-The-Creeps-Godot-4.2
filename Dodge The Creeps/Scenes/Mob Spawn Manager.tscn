@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch1m8ko4mooy4"]
+
+[ext_resource type="Script" path="res://Scripts/Mob Spawn Manager.gd" id="1_qxrq4"]
+
+[sub_resource type="Curve2D" id="Curve2D_c0c35"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -72, -81, 0, 0, 0, 0, 528, -96, 0, 0, 0, 0, 532, 742, 0, 0, 0, 0, -102, 729, 0, 0, 0, 0, -72, -81)
+}
+point_count = 5
+
+[node name="Mob Spawn Path" type="Path2D"]
+curve = SubResource("Curve2D_c0c35")
+script = ExtResource("1_qxrq4")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="."]
+position = Vector2(-72, -81)
+rotation = -0.0249948
+
+[node name="Mob Spawn Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Mob Spawn Timer" to="." method="_on_mob_spawn_timer_timeout"]
